@@ -3,12 +3,12 @@ version: '3.8'
 networks:
   app-network:
     driver: bridge
-    name: effective-network
+    name: network
 
 services:
   backend:
     build: ./backend
-    container_name: effective-backend
+    container_name: backend
     restart: unless-stopped
     networks:
       - app-network
@@ -19,7 +19,7 @@ services:
 
   nginx:
     image: nginx:1.26-alpine
-    container_name: effective-nginx
+    container_name: nginx
     restart: unless-stopped
     ports:
       - "80:80"

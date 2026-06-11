@@ -32,8 +32,8 @@ cd Effictive-Mobile
 При правильном запуске вы должны увидеть:
 
 ```
-Creating effective-backend ... done
-Creating effective-nginx   ... done
+Creating backend ... done
+Creating nginx   ... done
 ```
 
 ![Launching containers](https://github.com/Nik7Zol/Effictive-Mobile/blob/main/images/Launching_containers.png)
@@ -48,4 +48,10 @@ curl http://localhost
 Ожидаемый ответ:
 ![Curl](https://github.com/Nik7Zol/Effictive-Mobile/blob/main/images/Curl.png)
 
-## Схема
+## Схема (nginx->backend)
+
+Nginx, получив запрос, выполняет proxy_pass на upstream "backend:8080"
+
+Запрос переходит по Docker-сети (network) по имени сервиса (backend) и порту(8080).
+
+Backend, слушает порт 8080, и отвечает на любой запрос, заготовленной app.py в фразой.
